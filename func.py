@@ -12,3 +12,20 @@ def draw_circle_alpha(surface, color, center, radius):
 
 def draw_circle(surface, x, y, radius, color):
     gfxdraw.aacircle(surface, int(x), int(y), int(radius), color)
+
+def set_alphas(color):
+    # if color == (255,255,0): # magenta means clear
+    #     return (0,0,0,0)
+    # if color == (0,255,255): # cyan means shadow
+    #     return (0,0,0,128)
+    r,g,b = color
+    return (r,g,b,125) # otherwise use the solid color from the image.
+
+def change_alpha(img,alpha=255):
+  width,height=img.get_size()
+  for x in range(0,width):
+    for y in range(0,height):
+      r,g,b,old_alpha=img.get_at((x,y))
+      if old_alpha>0:
+        img.set_at((x,y),(r,g,b,alpha))
+  return img

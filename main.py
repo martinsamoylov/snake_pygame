@@ -1,14 +1,7 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-import random
 import fielddraw
 import pygame
 import settings
-import storage
 import snake
-import engine
 
 done = False
 
@@ -37,13 +30,13 @@ tick = 0
 
 while not done:
 
-    if storage.current_time == 0:
-        storage.current_time = pygame.time.get_ticks()
-        storage.time_tick = 1
+    if settings.current_time == 0:
+        settings.current_time = pygame.time.get_ticks()
+        settings.time_tick = 1
     else:
-        storage.time_tick = (pygame.time.get_ticks() - storage.current_time) / (1000/60)
+        settings.time_tick = (pygame.time.get_ticks() - settings.current_time) / (1000/60)
 
-        storage.current_time = pygame.time.get_ticks()
+        settings.current_time = pygame.time.get_ticks()
 
 
     for event in settings.pygame.event.get():
@@ -77,7 +70,7 @@ while not done:
 
 
 
-    clock.tick(storage.fps)
+    clock.tick(settings.fps)
     settings.pygame.display.update()
     settings.pygame.display.flip()
 settings.pygame.quit()
