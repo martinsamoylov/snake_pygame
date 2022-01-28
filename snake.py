@@ -46,14 +46,14 @@ class Snakes:
         elif self.key == 'u':
             y = y - 1
 
-        if x > settings.size - 1:
+        if x > settings.size_w - 1:
             x = 0
         if x <= -1:
-            x = settings.size - 1
-        if y > settings.size - 1:
+            x = settings.size_w - 1
+        if y > settings.size_h - 1:
             y = 0
         if y <= -1:
-            y = settings.size - 1
+            y = settings.size_h - 1
 
         newp = Point(x, y)
         if newp in self.mp:
@@ -88,8 +88,8 @@ class Snakes:
                 return
         self.key_queue.append(key)
     def createapple(self):
-        a = random.randint(0, settings.size - 1)
-        b = random.randint(0, settings.size - 1)
+        a = random.randint(0, settings.size_w - 1)
+        b = random.randint(0, settings.size_h - 1)
         p = Point(a,b)
 
         if p in self.mp:
